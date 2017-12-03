@@ -18,6 +18,7 @@ class BATTLETANK_API ATank : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ATank();
+	virtual void BeginPlay() override;
 
 	void AimAt(FVector HitLocation);
 
@@ -36,8 +37,6 @@ protected:
 	
 
 private:	
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -50,4 +49,7 @@ private:
 
 	// Local barrel reference for spawning projectile
 	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeInSeconds = 3;
+	double LastFireTime = 0;
 };
